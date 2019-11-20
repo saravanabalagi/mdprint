@@ -1,4 +1,4 @@
-from pymd.pymd_functions import mdprint, mdprint_dict, mdprint_list
+from mdprint.mdprint_functions import mdprint, mdprint_dict, mdprint_list
 __version__ = '0.0.1'
 
 __all__ = [

@@ -1,6 +1,6 @@
 import sys
 from typing import Union
-from pymd.helper_functions import _get_table_line_string
+from mdprint.helper_functions import _get_table_line_string
 import warnings
 
 
