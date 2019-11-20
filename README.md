@@ -1,4 +1,4 @@
-# mdutils
+# pymd
 
 Python tools to print strings to markdown file with styles. Also allows printing dicts and lists to table
 
