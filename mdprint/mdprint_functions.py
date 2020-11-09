@@ -6,7 +6,7 @@ import warnings
 
 def mdprint(*objects: any, file=sys.stdout, heading: Union[bool, int] = False,
             bold: bool = False, italics: bool = False, strikethrough: bool = False,
-            sep=' ', end='\n', flush=False) -> None:
+            sep: str = ' ', end: str = '\n', flush: bool = False) -> None:
     prepend_string = ''
     pre_and_post = ''
 
@@ -37,7 +37,8 @@ def mdprint(*objects: any, file=sys.stdout, heading: Union[bool, int] = False,
     print(pre_and_post[::-1], end=end, flush=flush)
 
 
-def mdprint_dict(d: dict, file=sys.stdout, keys_as_headers: bool = True, sort_keys: bool = False) -> None:
+def mdprint_dict(d: dict, file=sys.stdout, keys_as_headers: bool = True, sort_keys: bool = False, 
+                 start: str = '\n', end: str = '\n') -> None:
 
     items = list(d.items())
     if sort_keys:
@@ -52,14 +53,15 @@ def mdprint_dict(d: dict, file=sys.stdout, keys_as_headers: bool = True, sort_ke
         column_values = [item[1] for item in items]
         rows = list(map(list, zip(*column_values)))
 
-        mdprint_list([header_row, *rows], file=file, first_line_header=True)
+        mdprint_list([header_row, *rows], file=file, first_line_header=True, start=start, end=end)
 
     else:
-        mdprint_list(items, file=file, first_line_header=False)
+        mdprint_list(items, file=file, first_line_header=False, start=start, end=end)
 
 
-def mdprint_list(rows: list, file=sys.stdout, first_line_header: bool = True, sort_keys: bool = False) -> None:
-    print("", file=file)
+def mdprint_list(rows: list, file=sys.stdout, first_line_header: bool = True, sort_keys: bool = False,
+                 start: str = '\n', end: str = '\n') -> None:
+    print("", file=file, end=start)
 
     if sort_keys:
         zipped = list(zip(*rows))
@@ -92,7 +94,7 @@ def mdprint_list(rows: list, file=sys.stdout, first_line_header: bool = True, so
         # print as table
         print(_get_table_line_string(row), file=file)
 
-    print("", file=file)
+    print("", file=file, end=end)
 
 
 if __name__ == '__main__':
