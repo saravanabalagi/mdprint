@@ -5,7 +5,8 @@ import warnings
 
 
 def mdprint(*objects: any, file=sys.stdout, heading: Union[bool, int] = False,
-            bold: bool = False, italics: bool = False, strikethrough: bool = False,
+            bold: bool = False, italics: bool = False, strikethrough: bool = False, 
+            code: bool = False, code_block: bool = False,
             sep: str = ' ', end: str = '\n', flush: bool = False) -> None:
     prepend_string = ''
     pre_and_post = ''
@@ -30,6 +31,10 @@ def mdprint(*objects: any, file=sys.stdout, heading: Union[bool, int] = False,
             pre_and_post = f"**{pre_and_post}"
         if strikethrough:
             pre_and_post = f"~~{pre_and_post}"
+        if code:
+            pre_and_post = f"`{pre_and_post}"
+        if code_block:
+            pre_and_post = f"\n```\n{pre_and_post}"
 
     print(pre_and_post, end='', file=file)
     print(prepend_string, end='', file=file)

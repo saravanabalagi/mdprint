@@ -18,13 +18,22 @@ mdprint('You can make text ', end='')
 mdprint('bold', bold=True, end=', ')
 mdprint('italics', italics=True, end=', ')
 mdprint('or even ', end='')
-mdprint('strikethrough', strikethrough=True, end='')
+mdprint('strikethrough', strikethrough=True)
+mdprint('\nYou can also write ', end='')
+mdprint('code', code=True)
+mdprint('from mdprint import mdprint', code_block=True)
 ```
 
 ### Markdown styles
 It is convenient to use mdprint just like print.
 
 You can make text **bold**, _italics_, or even ~~strikethrough~~
+
+You can also write `code`
+
+```
+from mdprint import mdprint
+```
 
 ### Writing to file
 
