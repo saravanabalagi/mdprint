@@ -12,7 +12,7 @@ pip install mdprint
 ### Basics
 
 ```
-mdprint(' Markdown styles', heading=3)
+mdprint('Markdown styles', heading=3)
 mdprint('It is convenient to use mdprint just like print.\n')
 mdprint('You can make text ', end='')
 mdprint('bold', bold=True, end=', ')
@@ -25,6 +25,15 @@ mdprint('strikethrough', strikethrough=True, end='')
 It is convenient to use mdprint just like print.
 
 You can make text **bold**, _italics_, or even ~~strikethrough~~
+
+### Writing to file
+
+mdprint takes `file` argument similar to `print`
+
+```
+with open('README.md', 'w') as f:
+    mdprint('Hello', heading=2, file=f)
+```
 
 ### Dict
 ```

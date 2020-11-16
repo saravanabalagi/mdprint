@@ -21,7 +21,7 @@ def mdprint(*objects: any, file=sys.stdout, heading: Union[bool, int] = False,
             heading = 3
 
         # Fill no of hashes equal to heading count
-        prepend_string = ''.join(['#' for _ in range(heading)])
+        prepend_string = ''.join(['#' for _ in range(heading)]) + ' '
 
     else:
         if italics:
@@ -31,10 +31,10 @@ def mdprint(*objects: any, file=sys.stdout, heading: Union[bool, int] = False,
         if strikethrough:
             pre_and_post = f"~~{pre_and_post}"
 
-    print(pre_and_post, end='')
-    print(prepend_string, end='')
+    print(pre_and_post, end='', file=file)
+    print(prepend_string, end='', file=file)
     print(*objects, file=file, sep=sep, end='')
-    print(pre_and_post[::-1], end=end, flush=flush)
+    print(pre_and_post[::-1], end=end, flush=flush, file=file)
 
 
 def mdprint_dict(d: dict, file=sys.stdout, keys_as_headers: bool = True, sort_keys: bool = False, 
